@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("registrationForm");
+    const formContainer = document.querySelector(".form-container");
+    const successContainer = document.getElementById("success-container");
+    
     const nameInput = document.getElementById("name");
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
@@ -42,6 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const isValid = validateName() && validateEmail() && validatePassword();
         submitBtn.disabled = !isValid;
     }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault(); 
+        alert("Form submitted successfully!"); 
+        form.reset();
+        successContainer.style.display = 'block';
+    });
 
     nameInput.addEventListener("input", checkFormValidity);
     emailInput.addEventListener("input", checkFormValidity);
